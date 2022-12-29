@@ -11,8 +11,8 @@ export function App() {
   const filter = useSelector(state => state.filter);
 
   const filteredContacts = () => {
-    const toLower = filter.toLowerCase();
-    return contacts.filter(i => i.name.toLowerCase().includes(toLower));
+    const toLower = filter.toLocaleLowerCase();
+    return contacts.filter(i => i.name.toLocaleLowerCase().includes(toLower));
   };
 
   const dispatch = useDispatch();
