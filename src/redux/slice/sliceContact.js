@@ -8,7 +8,7 @@ export const sliceContact = createSlice({
       state.push(action.payload);
     },
     removeContact(state, action) {
-      state.filter(evt => evt.id !== action.payload);
+      return state.filter(evt => evt.id !== action.payload);
     },
   },
 });
