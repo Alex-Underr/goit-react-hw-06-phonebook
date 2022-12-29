@@ -8,14 +8,12 @@ import { addContact, removeContact } from 'redux/slice/sliceContact';
 
 export function App() {
   const contacts = useSelector(state => state.contact);
-  const filter = useSelector(state => state.filter);
+  const filtered = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
   const filteredContacts = () => {
-    // const toLower = filter.toLowerCase();
-    return contacts.filter(i =>
-      i.name.toLowerCase().includes(filter.toLowerCase())
-    );
+    const toLower = filtered.toLowerCase();
+    return contacts.filter(i => i.name.toLowerCase().includes(toLower));
   };
 
   const deleteItem = itemId => {
@@ -36,7 +34,7 @@ export function App() {
       <h1>Phonebook</h1>
       <ContactForm onSubmit={addingContact} />
       <h2>Contacts</h2>
-      <Filter value={filter} onChange={filterNow} />
+      <Filter value={filtered} onChange={filterNow} />
       <ContactList contacts={filteredContacts()} onClick={deleteItem} />
     </div>
   );
