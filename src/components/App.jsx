@@ -9,13 +9,15 @@ import { addContact, removeContact } from 'redux/slice/sliceContact';
 export function App() {
   const contacts = useSelector(state => state.contact);
   const filter = useSelector(state => state.filter);
+  const dispatch = useDispatch();
 
   const filteredContacts = () => {
-    const toLower = filter.toLocaleLowerCase();
-    return contacts.filter(i => i.name.toLocaleLowerCase().includes(toLower));
+    // const toLower = filter.toLowerCase();
+    return contacts.filter(i =>
+      i.name.toLowerCase().includes(filter.toLowerCase())
+    );
   };
 
-  const dispatch = useDispatch();
   const deleteItem = itemId => {
     dispatch(removeContact(itemId));
   };
