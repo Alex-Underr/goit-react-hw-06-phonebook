@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import styles from './contactList.module.css';
-
+import { BsPersonCircle } from 'react-icons/bs';
 export default function ContactList({ contacts, onClick }) {
   return (
     <ul>
       {contacts.map(({ id, name, number }) => (
         <li className={styles.list} key={id} id={id}>
+          <BsPersonCircle />
           <p>
             {name} : {number}
           </p>
