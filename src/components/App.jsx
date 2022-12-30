@@ -13,7 +13,9 @@ export function App() {
 
   const filteredContacts = () => {
     const toLower = filtered.toLowerCase();
-    return contacts.filter(i => i.name.toLowerCase().includes(toLower));
+    if (filtered) {
+      return contacts.filter(i => i.name.toLowerCase().includes(toLower));
+    } else return contacts;
   };
 
   const deleteItem = itemId => {
