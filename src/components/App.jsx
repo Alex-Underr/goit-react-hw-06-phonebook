@@ -12,8 +12,8 @@ export function App() {
   const dispatch = useDispatch();
 
   const filteredContacts = () => {
+    const toLower = filtered.trim().toLowerCase();
     if (filtered) {
-      const toLower = filtered.trim().toLowerCase();
       return contacts.filter(i => i.name.toLowerCase().includes(toLower));
     } else return contacts;
   };
