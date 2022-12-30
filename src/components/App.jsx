@@ -12,9 +12,11 @@ export function App() {
   const dispatch = useDispatch();
 
   const filteredContacts = () => {
-    const toLower = filtered.toLowerCase();
+    // const toLower = filtered.toLowerCase();
     if (filtered) {
-      return contacts.filter(i => i.name.toLowerCase().includes(toLower));
+      return contacts.filter(i =>
+        i.name.toLowerCase().includes(filtered.toLowerCase())
+      );
     } else return contacts;
   };
 
