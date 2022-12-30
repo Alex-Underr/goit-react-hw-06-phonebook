@@ -1,8 +1,9 @@
 .list {
   display: flex;
+  padding-top: 7px;
+  align-items: center;
+  gap: 10px;
   justify-content: space-between;
-  margin-bottom: 8px;
-  position: relative;
 }
 .btn {
   align-self: center;

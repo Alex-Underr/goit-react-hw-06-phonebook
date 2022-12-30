@@ -12,11 +12,9 @@ export function App() {
   const dispatch = useDispatch();
 
   const filteredContacts = () => {
-    // const toLower = filtered.toLowerCase();
+    const toLower = filtered.trim().toLowerCase();
     if (filtered) {
-      return contacts.filter(i =>
-        i.name.toLowerCase().includes(filtered.toLowerCase())
-      );
+      return contacts.filter(i => i.name.toLowerCase().includes(toLower));
     } else return contacts;
   };
 
@@ -38,7 +36,13 @@ export function App() {
       <h1>Phonebook</h1>
       <ContactForm onSubmit={addingContact} />
       <h2>Contacts</h2>
-      <Filter value={filtered} onChange={filterNow} />
+      <>
+        {contacts.length === 0 ? (
+          <p>The contact list is empty</p>
+        ) : (
+          <Filter value={filtered} onChange={filterNow} />
+        )}
+      </>
       <ContactList contacts={filteredContacts()} onClick={deleteItem} />
     </div>
   );
