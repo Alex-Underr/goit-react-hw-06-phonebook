@@ -3,7 +3,6 @@ import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 import styles from './form.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterContact } from 'redux/slice/sliceFilter';
 import { addContact, removeContact } from 'redux/slice/sliceContact';
 
 export function App() {
@@ -21,9 +20,6 @@ export function App() {
   const deleteItem = itemId => {
     dispatch(removeContact(itemId));
   };
-  const filterNow = event => {
-    dispatch(filterContact(event.currentTarget.value));
-  };
 
   const addingContact = contact => {
     contacts.some(e => e.name === contact.name)
@@ -37,11 +33,7 @@ export function App() {
       <ContactForm onSubmit={addingContact} />
       <h2>Contacts</h2>
       <>
-        {contacts.length === 0 ? (
-          <p>The contact list is empty</p>
-        ) : (
-          <Filter value={filtered} onChange={filterNow} />
-        )}
+        {contacts.length === 0 ? <p>The contact list is empty</p> : <Filter />}
       </>
       <ContactList contacts={filteredContacts()} onClick={deleteItem} />
     </div>

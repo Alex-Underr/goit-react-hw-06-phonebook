@@ -17,6 +17,7 @@ import { sliceFilter } from './slice/sliceFilter';
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['filter'],
 };
 
 const rootReducer = combineReducers({
